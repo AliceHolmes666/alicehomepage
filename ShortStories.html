@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Short Stories</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+
+    <style media="screen">
+        @font-face {
+            font-family: 'BAUHS93';
+            src: url('BAUHS93.TTF') format('truetype');
+        }
+
+        /*导航栏css
+        .navbar {
+            background-color: #333;
+            
+            color: white;
+            
+        }
+
+        .navbar-nav .nav-item {
+            margin: 0 60px;
+            margin-top: 6px;
+            font-family: 'BAUHS93';
+            color: white !important;
+        }
+
+        .title3 {
+            font-size: 1.5em;
+            color: white;
+            font-weight: bold;
+            margin-top: 0px !important;
+        }
+
+        .container {
+            height: auto;
+            position: absolute;
+            float: center;
+        }*/
+
+        /*侧边栏css*/
+        @font-face {
+            font-family: "iconfont";
+            /* Project id  */
+            src: url('iconfont.ttf?t=1636282499752') format('truetype');
+        }
+
+        .icon-yemianfanhui {
+            font-family: "iconfont" !important;
+            font-size: 16px;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .custom-icon {
+            font-family: "iconfont";
+            font-size: 2px;
+            font-style: normal;
+            width: 20px;
+            /* 设置图标宽度 */
+            height: 18px;
+        }
+
+        .custom-icon:before {
+            content: "\e7ad";
+        }
+
+        .custom-icon:before {
+            content: "\e609";
+        }
+
+        .custom-icon:before {
+            content: "\e60a";
+        }
+
+        .custom-icon:before {
+            content: "\e60b";
+        }
+
+        .custom-icon:before {
+            content: "\e60c";
+        }
+
+        .icon-yemianfanhui:before {
+            content: "\e601";
+        }
+
+        /*index.css*/
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 白色主题 
+        :root {
+            --color-menu-bg: #fff;
+            --font-color-mi: #000;
+            --font-color-mi-hover: #1890ff;
+            --color-bg-mi-hover: #ececec;
+            --border-radius-mi: 2px;
+            --transition-menu-time: 0.2s;
+            --color-line-bg: #d3d3d3;
+        }*/
+
+        /*黑色主题，使用时把上面的白色主题注释掉，启用下面的css代码*/
+        :root {
+            --color-bg: #e7e7e7;
+            --color-menu-bg: #252323;
+            --font-color-mi: #c9cdd4;
+            --font-color-mi-hover: #7249d1;
+            --color-bg-mi-hover: #303030;
+            --border-radius-mi: 2px;
+            --transition-menu-time: 0.2s;
+            --color-line-bg: #333333;
+        }
+
+        body {
+            display: flex;
+            flex-direction: row;
+            height: 100vh;
+        }
+
+        .menu-box {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+            width: fit-content;
+            min-height: 100vh;
+            padding: 6px 12px;
+            box-sizing: border-box;
+            background-color: var(--color-menu-bg);
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+            position: absolute;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            /* 确保.content占满整个视口宽度 */
+            height: 100vh;
+            /* 使.content的高度等于视口高度 */
+        }
+
+        .container {
+            margin-left: 50px;
+            /* 自动调整左边距，使.container位于.menu-box的右侧 */
+            padding: 50px;
+            padding-top: 5em;
+            /* 根据需要调整 */
+            box-shadow: 5px 10px 10px rgb(187, 187, 187);
+            background-color: #53575298;
+            width: calc(100% - 220px);
+            /* 减去侧边栏的宽度 */
+        }
+
+        .card.mb-3 {
+            position: absolute;
+            top: 50%;
+            left: 57%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+        }
+
+        .menu-box input[type='checkbox'] {
+            display: none;
+        }
+
+        .menu-box>label {
+            position: absolute;
+            top: 48%;
+            right: 0;
+            transform: translateX(50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 4px 0px #000;
+            background-color: var(--color-menu-bg);
+            color: var(--font-color-mi);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .menu-box>label>i {
+            font-weight: 900;
+            text-indent: -3px;
+            font-size: 20px;
+            transition: transform var(--transition-menu-time);
+            transform: rotate(0deg);
+        }
+
+        .menu-box>label:hover {
+            box-shadow: 0px 0px 2px 0px #000;
+            color: var(--font-color-mi-hover);
+        }
+
+        .menu-box>input#menu-btn:checked+label>i {
+            transform: rotate(180deg);
+        }
+
+        .menu {
+            font-size: 18px;
+            width: 220px;
+            min-height: 100%;
+            cursor: pointer;
+            overflow: hidden;
+            transition: width var(--transition-menu-time);
+            color: var(--font-color-mi);
+        }
+
+        .menu-box>input#menu-btn:checked~.menu {
+            width: 0;
+        }
+
+        .menu-title {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .menu-item>label {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            border-radius: var(--border-radius-mi);
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-item>label:hover {
+            color: var(--font-color-mi-hover);
+        }
+
+        .menu-item>label>i:first-child {
+            flex: none;
+            margin-right: 6px;
+            font-size: 24px;
+        }
+
+        .menu-item>label>span {
+            flex: 1;
+        }
+
+        .menu-item>label>i:last-child {
+            flex: none;
+            font-size: 20px;
+            font-weight: 900;
+            transform: rotate(0deg);
+            transition: transform var(--transition-menu-time);
+        }
+
+        .menu-item>input:checked+label>i:last-child {
+            transform: rotate(180deg);
+        }
+
+        .menu-content {
+            height: 0;
+            overflow: hidden;
+            transition: height var(--transition-menu-time);
+            display: flex;
+            flex-wrap: wrap;
+            background-color: var(--color-menu-bg);
+        }
+
+        /* 选项，若 n 项，就 n * 40px */
+        .menu-item>input#menu-item1:checked~.menu-content {
+            height: calc(3 * 40px);
+        }
+
+        .menu-item>input#menu-item2:checked~.menu-content {
+            height: calc(2 * 40px);
+        }
+
+        .menu-item>input#menu-item3:checked~.menu-content {
+            height: calc(3 * 40px);
+        }
+
+        .menu-content>span {
+            width: 100%;
+            text-indent: 20px;
+            line-height: 40px;
+            border-radius: var(--border-radius-mi);
+        }
+
+        .menu-content>span:hover {
+            background-color: var(--color-bg-mi-hover);
+            color: var(--font-color-mi-hover);
+        }
+
+        .set-line {
+            margin: 20px 0 10px 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--color-line-bg);
+        }
+
+
+
+        /* 给content类添加相对定位 */
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+</head>
+
+<body background="img/R-C (1).png"
+style="background-repeat: repeat;background-size:100% 100%;">
+    <!--导航栏
+    <nav class="navbar navbar-expand-lg navbar-light mx-auto">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#" style="color:white">PHOTPGRAPHS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="color:white">OPINION</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="color:white">AH Little World</a>
+                    </li>
+                    <li class="nav-item title3">
+                        <a class="nav-link" href="#" style="color:white">SHORT STORY</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="color:white">OTHER</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!--侧边栏-->
+    <div class="content">
+        <div class="menu-box">
+            <!-- 展示与隐藏侧边栏 开始-->
+            <input type="checkbox" id="menu-btn">
+            <label for="menu-btn"><i class="iconfont icon-yemianfanhui"></i></label>
+            <!-- 展示与隐藏侧边栏 结束-->
+            <div class="menu">
+                <!-- 侧边栏的标题 开始-->
+                <div class="menu-title">
+                    <h1>Menu</h1>
+                </div>
+                <!-- 侧边栏的标题 结束-->
+
+                <!-- 每一项导航 -->
+                <div class="menu-item">
+                    <input type="checkbox" id="menu-item1">
+                    <label for="menu-item1">
+                        
+                            <svg class="custom-icon" xmlns="http://www.w3.org/2000/svg" width="200" height="200"
+                                viewBox="0 0 1024 1024">
+                                <path
+                                    d="M672 64H416a32 32 0 0 0-32 32 96.11 96.11 0 0 1-96 96 32 32 0 0 0-32 32v128a32 32 0 0 0 32 32h96v544a32 32 0 0 0 32 32h256a32 32 0 0 0 32-32V96a32 32 0 0 0-32-32z m-227.21 64H640v96.08A159.19 159.19 0 0 0 544 192H415.91a159.33 159.33 0 0 0 28.88-64zM448 384h64v512h-64z m192 512h-64V368a48.05 48.05 0 0 0-48-48H320v-64h224a96.11 96.11 0 0 1 96 96z"
+                                    fill="#5C5C66"></path>
+                            </svg>
+                            <a href="https://online.fliphtml5.com/hptnh/hnmw/#p=4" class="custom-link" style="text-decoration: none;color:inherit;">
+                                <span>&nbsp;&nbsp;经年流转</span>
+                            </a>
+                    </label>
+                </div>
+
+                <div class="menu-item">
+                    <input type="checkbox" id="menu-item2">
+                    <label for="menu-item2">
+                        
+                        <svg t="1712835887523" class="custom-icon" viewBox="0 0 1024 1024" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" p-id="5507" width="200" height="200">
+                            <path
+                                d="M896 352v-64A224 224 0 0 0 672 64H160a32 32 0 0 0-32 32v256a32 32 0 0 0 32 32h314.43L158.81 752.21a128.1 128.1 0 0 0-30.81 83.3V928a32 32 0 0 0 32 32h704a32 32 0 0 0 32-32V672a32 32 0 0 0-32-32H674.58L889 372a32 32 0 0 0 7-20zM672 128a160.15 160.15 0 0 1 140.5 83.5A159 159 0 0 0 736 192H192v-64zM192 896v-60.49a64 64 0 0 1 15.41-41.65L558.72 384h75.7L295.7 779.17A32 32 0 0 0 320 832h512v64z m640-128H389.58l55-64.18a32 32 0 0 0 3.42 0.18h384zM499.29 640l229-267.17A32 32 0 0 0 704 320H192v-64h544a96.13 96.13 0 0 1 95.42 85.5L592.62 640z"
+                                fill="#5C5C66" p-id="5508"></path>
+                        </svg>
+                        <a href="https://online.fliphtml5.com/hptnh/hnmw/#p=8" class="custom-link" style="text-decoration: none;color:inherit;">
+                        <span>&nbsp;&nbsp;物是人非</span>
+                            </a>
+                    </label>
+                </div>
+                <div class="menu-item">
+                    <input type="checkbox" id="menu-item2">
+                    <label for="menu-item2">
+                        <svg class="custom-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="200"
+                            height="200">
+                            <path fill="#5C5C66"
+                                d="M830.39 129.61A222.53 222.53 0 0 0 672 64H160a32 32 0 0 0-32 32v256a32 32 0 0 0 32 32h352a32.05 32.05 0 0 1 30 20.78l-84.38 84.38-0.09 0.09-0.13 0.12a32 32 0 0 0-6 36.94l28.6 57.24V608a32 32 0 0 1-32 32H160a32 32 0 0 0-32 32v256a32 32 0 0 0 32 32h448a288 288 0 0 0 288-288 32 32 0 0 0-7-20L781.61 517.79 883.2 441.6A32 32 0 0 0 896 416V288a222.53 222.53 0 0 0-65.61-158.39zM672 128c73.16 0 135 49.35 154 116.51A207.12 207.12 0 0 0 688 192H192v-64zM448 704a96.17 96.17 0 0 0 91.38-66.56l36 45.07A96.14 96.14 0 0 1 480 768H192v-64zM192 896v-64h288c88.22 0 160-71.78 160-160a32 32 0 0 0-7-20L522.88 514.37l75.75-75.74A32 32 0 0 0 608 416a95.56 95.56 0 0 0-5.49-32H672a32 32 0 0 1 28.92 18.31L588.8 486.4c-0.27 0.2-0.54 0.39-0.8 0.6a32 32 0 0 0-5 45l121 151.23V688c0 114.69-93.31 208-208 208z m495-14.41c0.43-0.42 0.87-0.83 1.29-1.26A270.19 270.19 0 0 0 768 688v-16a32 32 0 0 0-7-20L653.61 517.79 755.2 441.6A32 32 0 0 0 768 416a96.11 96.11 0 0 0-96-96H192v-64h496c79.4 0 144 64.6 144 144l-115.2 86.4a32 32 0 0 0-6.4 44.8c0.2 0.27 0.42 0.52 0.62 0.78L831.74 682.9c-4.38 90.98-63.31 167.89-144.74 198.69z">
+                            </path>
+                            <a href="https://online.fliphtml5.com/hptnh/hnmw/#p=11" class="custom-link" style="text-decoration: none;color:inherit;">
+                            <span>&nbsp;&nbsp;桃园结义</span></a>
+                    </label>
+                </div>
+
+                <div class="menu-item">
+                    <input type="checkbox" id="menu-item3">
+                    <label for="menu-item3">
+                        <svg t="1712835709012" class="custom-icon" viewBox="0 0 1024 1024" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" p-id="4919" width="200" height="200">
+                            <path
+                                d="M928 448h-96V96a32 32 0 0 0-32-32H590.14a127.36 127.36 0 0 0-99.95 48L156.05 529.71a128.46 128.46 0 0 0-28.05 80v127.63a31.92 31.92 0 0 0 11 22.79 32.09 32.09 0 0 0 9.53 5.75h0.22A31.89 31.89 0 0 0 160 768h352v160a32 32 0 0 0 32 32h256a32 32 0 0 0 32-32V768h96a32 32 0 0 0 32-32V480a32 32 0 0 0-32-32zM192 609.67a64.27 64.27 0 0 1 14-40L540.17 152a63.66 63.66 0 0 1 50-24H640v448h-64V256a32 32 0 0 0-57-20L192 644.78zM457 576l55-68.77V576z m119 320V768h64v128z m320-192h-64v-64h64z m0-128h-96a32 32 0 0 0-32 32v288h-64V736a32 32 0 0 0-32-32H226.58L512 347.23v57.54L365.41 588a32 32 0 0 0 25 52H672a32 32 0 0 0 32-32V128h64v352a32 32 0 0 0 32 32h96z"
+                                fill="#5C5C66" p-id="4920"></path>
+                        </svg>
+                        <a href="https://online.fliphtml5.com/hptnh/hnmw/#p=14" class="custom-link" style="text-decoration: none;color:inherit;">
+                        <span>&nbsp;&nbsp;不测风云</span></a>
+                    </label>
+                </div>
+                <div class="menu-item">
+                    <input type="checkbox" id="menu-item3">
+                    <label for="menu-item3">
+                        <svg t="1712835759966" class="custom-icon" viewBox="0 0 1024 1024" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" p-id="5066" width="200" height="200">
+                            <path
+                                d="M873.52 65.44A31.89 31.89 0 0 0 864 64H160a32 32 0 0 0-32 32v329.34a224 224 0 0 0 123.82 200.35L280.45 640H160a32 32 0 0 0-32 32v256a32 32 0 0 0 32 32h448a288 288 0 0 0 288-288v-73.34a224 224 0 0 0-123.82-200.35L743.55 384H864a32 32 0 0 0 32-32V96a32 32 0 0 0-22.48-30.56zM832 128v64H192v-64zM192 425.34V256h640v64H288a32 32 0 0 0-32 32v79.11a111.1 111.1 0 0 0 61.42 99.38L536.45 640h-112.9l-143.1-71.55A159.13 159.13 0 0 1 192 425.34z m220.62-7.25L678 550.76A47.11 47.11 0 0 1 656.89 640h-18.33a51.49 51.49 0 0 0-27.18-34.09L346 473.24a46.84 46.84 0 0 1-26-42.13V384h65.44a51.49 51.49 0 0 0 27.18 34.09zM608 896H192v-64h480a222.38 222.38 0 0 0 122.87-36.64C754.74 856 686 896 608 896z m224-297.34V608c0 88.22-71.78 160-160 160H192v-64h464.89a111.11 111.11 0 0 0 49.69-210.49L487.56 384h112.89l143.1 71.55A159.13 159.13 0 0 1 832 598.66z"
+                                fill="#5C5C66" p-id="5067"></path>
+                        </svg>
+                        <a href="https://online.fliphtml5.com/hptnh/hnmw/#p=16" class="custom-link" style="text-decoration: none;color:inherit;">
+                        <span>&nbsp;&nbsp;此时相望不相闻</span></a>
+                    </label>
+                </div>
+                <div class="menu-item">
+                    <input type="checkbox" id="menu-item3">
+                    <label for="menu-item3">
+                        <svg class="custom-icon" xmlns="http://www.w3.org/2000/svg" width="200" height="200"
+                            viewBox="0 0 1024 1024">
+                            <path
+                                d="M811.65 340.35A286.15 286.15 0 0 0 608 256h-68.77L575 104v-0.08l0.14-0.59A32 32 0 0 0 544 64H288a32 32 0 0 0-31.15 24.67l-128 544A32.27 32.27 0 0 0 128 640v32a288 288 0 0 0 288 288h192a288 288 0 0 0 288-288V544a286.15 286.15 0 0 0-84.35-203.65zM313.34 128h62.26L256.85 632.67A32.27 32.27 0 0 0 256 640v32a32 32 0 0 0 32 32h256a95.73 95.73 0 0 0 27.87-4.13A96.17 96.17 0 0 1 480 768H288a96.11 96.11 0 0 1-96-96v-28.29zM544 576a32 32 0 0 1 0 64h-95.17l15.09-64zM416 896a223.29 223.29 0 0 1-159.77-67.17A160.64 160.64 0 0 0 288 832h192c88.22 0 160 71.78 160 160v-64a95.73 95.73 0 0 0-4.13-27.87A96.17 96.17 0 0 1 704 672c0 123.51-100.49 224-224 224z m256-9.32q6-5.34 11.67-11A286.15 286.15 0 0 0 768 672c0-88.22-71.78-160-160-160H438.59a32 32 0 0 0-31.15 24.66L383.07 640h-62.2l120.47-512h62.26l-66 280.67A32 32 0 0 0 468.71 448H608c123.51 0 224 100.49 224 224 0 101.29-67.58 187.08-160 214.68z m139.65-418.33A286.15 286.15 0 0 0 608 384h-98.89l15.06-64H608c101.29 0 187.08 67.58 214.68 160q-5.34-5.93-11.03-11.65z"
+                                fill="#5C5C66"></path>
+                        </svg>
+                        <a href="https://online.fliphtml5.com/hptnh/hnmw/#p=19" class="custom-link" style="text-decoration: none;color:inherit;">
+                        <span>&nbsp;&nbsp;交响前奏</span></a>
+                    </label>
+                </div>
+                <div class="menu-item">
+                    <input type="checkbox" id="menu-item3">
+                    <label for="menu-item3">
+                        <svg t="1712835803084" class="custom-icon" viewBox="0 0 1024 1024" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" p-id="5213" width="200" height="200">
+                            <path
+                                d="M864 64H160a32 32 0 0 0-32 32v256a32 32 0 0 0 32 32h317.11a1121.38 1121.38 0 0 0-209.28 476.07l-11.31 62.21A32 32 0 0 0 288 960h256a32 32 0 0 0 31.24-25.06l2.76-12.29a1058.45 1058.45 0 0 1 241.56-472.49l44.11-49.62a127.88 127.88 0 0 0 32.33-85V96a32 32 0 0 0-32-32z m-32 64v64H192v-64zM330.79 871.52A1057.21 1057.21 0 0 1 558.84 384h74.89a1121.64 1121.64 0 0 0-242 502.35l-1.96 9.65h-63.43zM832 315.5a63.92 63.92 0 0 1-16.17 42.5l-44.11 49.62A1122.78 1122.78 0 0 0 518.41 896h-63.36a1057.65 1057.65 0 0 1 240.17-485.38l32.86-37.55A32 32 0 0 0 704 320H192v-64h640z"
+                                fill="#5C5C66" p-id="5214"></path>
+                        </svg>
+                        <a href="https://online.fliphtml5.com/hptnh/hnmw/#p=22" class="custom-link" style="text-decoration: none;color:inherit;">
+                        <span>&nbsp;&nbsp;柳暗花明</span></a>
+                    </label>
+                </div>
+                <div class="menu-item">
+                    <input type="checkbox" id="menu-item3">
+                    <label for="menu-item3">
+                        <svg t="1712835851737" class="custom-icon" viewBox="0 0 1024 1024" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" p-id="5360" width="200" height="200">
+                            <path
+                                d="M830.39 129.61A222.53 222.53 0 0 0 672 64H416a288 288 0 0 0-288 288 32 32 0 0 0 2.29 11.88L188 508.26l-54.67 82A32 32 0 0 0 128 608v128a224 224 0 0 0 224 224h320a224 224 0 0 0 224-224 31.92 31.92 0 0 0-1.64-10.12l-59.81-179.42 58.07-116.15A32 32 0 0 0 896 416V288a222.53 222.53 0 0 0-65.61-158.39zM672 128c73.16 0 135 49.35 154 116.51A207.12 207.12 0 0 0 688 192H544c-88.22 0-160 71.78-160 160a32 32 0 0 0 2.29 11.88L445.94 513l-28.3 84.88A31.92 31.92 0 0 0 416 608a95.56 95.56 0 0 0 5.49 32H352a32.06 32.06 0 0 1-31-23.88l57.39-86.07c0-0.06 0.07-0.12 0.11-0.17l0.09-0.13a31.92 31.92 0 0 0 3.09-29.63L320 345.84V336c0-114.69 93.31-208 208-208zM544 384a32.07 32.07 0 0 1 31.36 25.69l-60 120a31.93 31.93 0 0 0-1.74 24.43l24.24 72.7A32.07 32.07 0 0 1 512 640a32.05 32.05 0 0 1-31.71-27.68l30.06-90.19a31.81 31.81 0 0 0 0-20.25l-30.07-90.2A32.05 32.05 0 0 1 512 384zM337 142.42l-1.28 1.25A270.19 270.19 0 0 0 256 336v16a32 32 0 0 0 2.29 11.88L316 508.26l-54.67 82A32 32 0 0 0 256 608a96.11 96.11 0 0 0 96 96h160a95.77 95.77 0 0 0 47.41-12.57l16.3 48.89A32.05 32.05 0 0 1 544 768H336c-79.4 0-144-64.6-144-144v-6.31l58.43-87.64c0-0.06 0.07-0.12 0.11-0.17l0.09-0.13a31.92 31.92 0 0 0 3.09-29.63L192.08 346c2.45-93.09 62.01-172.22 144.92-203.58zM352 896c-73.16 0-135-49.35-154-116.51A207.12 207.12 0 0 0 336 832h208a96.11 96.11 0 0 0 96-96 31.92 31.92 0 0 0-1.64-10.12l-59.81-179.42 58.07-116.15A32 32 0 0 0 640 416a95.56 95.56 0 0 0-5.49-32H672a32.06 32.06 0 0 1 31.38 25.69l-60 120a31.93 31.93 0 0 0-1.74 24.43L704 741.19V752c0 79.4-64.6 144-144 144z m363.49-6A207.14 207.14 0 0 0 768 752v-16a31.92 31.92 0 0 0-1.64-10.12l-59.81-179.42 58.07-116.15A32 32 0 0 0 768 416a96.11 96.11 0 0 0-96-96H512a95.64 95.64 0 0 0-63.69 24.23A96.14 96.14 0 0 1 544 256h144c79.4 0 144 64.6 144 144v8.45l-60.62 121.24a31.86 31.86 0 0 0-1.73 24.45L831.92 741c-2.17 70.94-50.79 130.43-116.43 149z"
+                                fill="#5C5C66" p-id="5361"></path>
+                        </svg>
+                        <a href="https://online.fliphtml5.com/hptnh/hnmw/#p=25" class="custom-link" style="text-decoration: none;color:inherit;">
+                        <span>&nbsp;&nbsp;水落石出</span></a>
+                    </label>
+                </div>
+                <div class="menu-item">
+                    <input type="checkbox" id="menu-item3">
+                    <label for="menu-item3">
+                        <svg class="custom-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="200"
+                            height="200">
+                            <path fill="#5C5C66"
+                                d="M811.65 148.35A286.15 286.15 0 0 0 608 64H416a288 288 0 0 0-288 288v128a288 288 0 0 0 288 288h68.77l-35.92 152.67A32 32 0 0 0 480 960h256a32 32 0 0 0 31.15-24.67l128-544A32.27 32.27 0 0 0 896 384v-32a286.15 286.15 0 0 0-84.35-203.65zM416 128h128c88.22 0 160 71.78 160 160v92.29L582.66 896H520.4l66-280.67a32 32 0 0 0-36.81-38.83 32.65 32.65 0 0 0-5.59-0.5H416a96 96 0 0 1-27.87-187.87A95.73 95.73 0 0 0 384 416v40a56.06 56.06 0 0 0 56 56h145.44a32 32 0 0 0 31.12-24.68l22.59-96A32.27 32.27 0 0 0 640 384v-64a128.14 128.14 0 0 0-128-128h-96a286.15 286.15 0 0 0-203.65 84.35q-5.7 5.7-11 11.67C228.92 195.58 314.71 128 416 128z m159.13 256l-15.06 64H448v-32a32 32 0 0 1 32-32zM416 704c-123.51 0-224-100.49-224-224s100.49-224 224-224h96a64.07 64.07 0 0 1 64 64H416c-88.22 0-160 71.78-160 160s71.78 160 160 160h98.89l-15.06 64z m416-323.71L710.66 896H648.4l118.75-504.67A32.27 32.27 0 0 0 768 384v-96a222.38 222.38 0 0 0-36.64-122.87C792 205.26 832 274 832 352z">
+                            </path>
+                        </svg>
+                        <a href="https://online.fliphtml5.com/hptnh/hnmw/#p=27" class="custom-link" style="text-decoration: none;color:inherit;">
+                        <span>&nbsp;&nbsp;魔幻现实找到相交点</span></a>
+                    </label>
+                </div>
+                <div class="set-line"></div>
+                <div class="menu-item">
+                    <label>
+                        <svg t="1712836034475" class="custom-icon" viewBox="0 0 1024 1024" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" p-id="10295" width="200" height="200">
+                            <path d="M512 512m-450.56 0a450.56 450.56 0 1 0 901.12 0 450.56 450.56 0 1 0-901.12 0Z"
+                                fill="#e6e6e6" p-id="10296"></path>
+                            <path
+                                d="M626.0736 254.89408c11.0592 11.4688 11.69408 29.61408 1.9456 41.84064l-1.9456 2.23232L420.70016 512 626.0736 725.03296c11.0592 11.4688 11.69408 29.61408 1.9456 41.86112l-1.9456 2.21184c-11.03872 11.4688-28.54912 12.14464-40.3456 2.02752l-2.1504-2.02752L356.9664 534.03648a32.03072 32.03072 0 0 1-1.9456-41.86112l1.9456-2.21184 226.6112-235.06944a29.2864 29.2864 0 0 1 42.496 0z"
+                                fill="#8a8a8a" p-id="10297"></path>
+                        </svg>
+                        <a href="index.html" class="custom-link" style="text-decoration: none;color:inherit;">
+                        <span>&nbsp;&nbsp;Back</span></a>
+                    </label>
+                </div>
+            </div>
+            <!--简介-->
+            <!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9 col-xl-9" style="display: flex;justify-content: center;">
+                <div class="container" style="height: auto; 
+                    background-color: #53575298;
+                    box-shadow: 5px 10px 10px rgb(187, 187, 187);">
+                    <div class="row center">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5 col-xl-5"
+                            style="display: flex;justify-content: center;">
+                            <p><b>《美丽新世界》</b></p>
+                            <a href="https://online.fliphtml5.com/hptnh/hnmw/" target="_blank"
+                                class="btn btn-primary">点击阅读</a>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7 col-xl-7"
+                            style="display: flex;justify-content: center;">
+                            <img src="img/fengmian.png" alt="封面图片" style="max-width: 100%; height: auto;" />
+                        </div>
+                        <div class=""></div>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+        <div class="card mb-3" style="max-width: 1200px;background: #cfccccdf;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="assets/images/fengmian.png" class="img-fluid rounded-start" alt="fengmian" style="padding: 20px;">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body" style="padding-top:100px;">
+                  <h5 class="card-title" style="font-family:'Courier New', Courier, monospace"><b>《美丽新世界2139》</b></h5>
+                  <p class="card-text" style="font-family:'Courier New', Courier, monospace">简介：故事架构在一百年之后，科技的迅速发展，人们从现实生活中抽离。VR、AR、虚拟引擎、3D渲染可以建造一个理想国度，人人都以为到了一个美丽新世界。“History is a circle.”而当人类的生活方式被颠覆，当世界被“头号玩家”主宰，当历史回溯时代倒退,人类又被附上婆罗门、刹帝利、吠舍以及首陀罗这样三六九等的标签，更可悲的是人们被制度所驯化，静默地承受着这一切。科技被赋予意识形态的属性，但历史向倒流回溯了一样，只属于上层统治者的游戏。生长在母亲下落不明，父亲被关进精神病院数十载的环境中，因参加了起义反抗，Jerry被流放到战争中，在那个炼狱一般的横尸之地，Jerry经历了生死的洗礼，也似乎找到了人间蒸发的母亲，同时被卷进举国轻重的政党漩涡中，成为党派间排除异己的一颗棋子，在党派争斗中Jerry好像发现所处世界的蹊跷之处，当所爱之人一个个为追寻真相而死，Jerry也逐渐开始去寻找真相逐渐揭露出这个美丽新世界不为人知的满目疮痍……</p>
+                  <p class="card-text"><small class="text-body-secondary" style="font-family:'Courier New', Courier, monospace"><b>李慧婷 敬上</b></small></p>
+                  <a href="https://online.fliphtml5.com/hptnh/hnmw/" target="_blank" class="btn btn-secondary" style="font-family:'Courier New', Courier, monospace">欢迎进入美丽新世界2139...</a>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+</body>
+
+</html>
